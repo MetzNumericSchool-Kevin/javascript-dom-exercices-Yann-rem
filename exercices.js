@@ -39,3 +39,34 @@ const callArchibald = document.querySelector("#call_archibald");
 callArchibald.addEventListener("click", () => {
   alert("🧙‍♂️ J'arrive, j'arrive Aventurier !.");
 });
+
+// Exercice 5 : Faisons un peu de magie 🪄
+
+// Récupération des boîtes magiques
+const magicBoxes = document.querySelectorAll("#boites_magique .boite");
+
+// Ajout d'un écouteur d'événement sur chaque boîte magique
+document.querySelectorAll("#btn_change_red, #btn_change_blue, #btn_change_green").forEach((button) =>
+  button.addEventListener("click", () => {
+    switch (button.id) {
+      // Première boîte magique en rouge
+      case "btn_change_red":
+        magicBoxes[0].style.backgroundColor = "#ff0000";
+        break;
+
+      // Deux premières boîtes magiques en bleu
+      case "btn_change_blue":
+        [...magicBoxes].slice(0, 2).forEach((box) => {
+          box.style.backgroundColor = "#0000ff";
+        });
+        break;
+
+      // Toutes les boîtes magiques en vert
+      case "btn_change_green":
+        magicBoxes.forEach((box) => {
+          box.style.backgroundColor = "#00ff00";
+        });
+        break;
+    }
+  })
+);

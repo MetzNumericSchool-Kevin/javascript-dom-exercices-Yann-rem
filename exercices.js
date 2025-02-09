@@ -70,3 +70,41 @@ document.querySelectorAll("#btn_change_red, #btn_change_blue, #btn_change_green"
     }
   })
 );
+
+// Exercice 6 : Aventurier, voici ma boutique !
+
+// Liste de potions
+const potions = [
+  {
+    name: "Potion de soin",
+    description:
+      "Cette potion rouge vif a une odeur de fraise des bois. Un seul gorgée et vos blessures se referment comme par magie ! Effets secondaires possibles: cheveux roses pendant 24h.",
+    price: 10,
+  },
+  {
+    name: "Potion de sommeil",
+    description:
+      "Un liquide bleu nuit qui sent la lavande et les rêves. Une goutte et vous dormirez comme un bébé dragon ! Attention: ne pas utiliser si vous devez combattre un troll dans les prochaines 8 heures.",
+    price: 50,
+  },
+];
+
+// Récupération du conteneur de la liste de potions
+const potionList = document.querySelector("#liste_potions");
+
+// Récupération du template
+const potionTemplate = document.querySelector("#template_potion");
+
+// Boucle pour insérer chaque potion dans la liste
+potions.forEach((potion) => {
+  // Clonage du template
+  const potionElement = potionTemplate.content.cloneNode(true);
+
+  // Modification des éléments du clone avec les données de la potion
+  potionElement.querySelector(".nom_potion").textContent = potion.nom;
+  potionElement.querySelector(".description_potion").textContent = potion.description;
+  potionElement.querySelector(".prix_potion").textContent = potion.prix;
+
+  // Ajout du clone dans le conteneur
+  potionList.appendChild(potionElement);
+});

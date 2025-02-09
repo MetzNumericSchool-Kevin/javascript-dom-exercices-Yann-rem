@@ -21,3 +21,11 @@ paragraph.textContent =
 
 // Ajout de l'élément paragraphe dans la description de la boutique
 shopDescription.appendChild(paragraph);
+
+// Exercice 3 : Roger, enfoiré !
+
+// Récupération de la blague de Roger
+const rogerJoke = document.querySelector("#blague_de_roger_le_sorcier");
+
+// Suppression de la blague de Roger
+rogerJoke.remove();

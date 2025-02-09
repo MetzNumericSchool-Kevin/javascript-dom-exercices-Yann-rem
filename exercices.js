@@ -29,3 +29,13 @@ const rogerJoke = document.querySelector("#blague_de_roger_le_sorcier");
 
 // Suppression de la blague de Roger
 rogerJoke.remove();
+
+// Exercice 4 : Archibald n'est pas là, appelons le !
+
+// Récupération du bouton pour appeler Archibald
+const callArchibald = document.querySelector("#call_archibald");
+
+// Ajout d'un écouteur d'événement sur le bouton pour appeler Archibald
+callArchibald.addEventListener("click", () => {
+  alert("🧙‍♂️ J'arrive, j'arrive Aventurier !.");
+});

@@ -108,3 +108,64 @@ potions.forEach((potion) => {
   // Ajout du clone dans le conteneur
   potionList.appendChild(potionElement);
 });
+
+// Exercice 7 : Plus de potions, nous avons besoin de plus de potions !
+
+// Fonction pour ajouter une nouvelle potion dans la boutique
+const addPotion = (name, description, price) => {
+  // Clonage du template
+  const potionElement = potionTemplate.content.cloneNode(true);
+
+  // Modification des éléments du clone avec les données de la potion
+  potionElement.querySelector(".nom_potion").textContent = name;
+  potionElement.querySelector(".description_potion").textContent = description;
+  potionElement.querySelector(".prix_potion").textContent = price;
+
+  // Ajout du clone dans le conteneur
+  potionList.appendChild(potionElement);
+};
+
+// Récupération du formulaire
+const form = document.querySelector(".form");
+
+// Récupération du message d'erreur
+const invalidFeedback = document.querySelector(".invalid-feedback");
+
+// Variable pour stocker le timeout de l'affichage du message d'erreur
+let invalidFeedbackTimeout;
+
+// Ajout d'un écouteur d'événement sur la soumission du formulaire
+form.addEventListener("submit", (event) => {
+  // Blocage des comportements par défaut
+  event.preventDefault();
+
+  // Récupération des données du formulaire avec l'objet `FormData`
+  const formData = new FormData(form);
+
+  // Récupération des valeurs des champs du formulaire avec `trim()`
+  const name = formData.get("nom").trim();
+  const description = formData.get("description").trim();
+  const price = formData.get("prix").trim();
+
+  // Vérification des données du formulaire
+  if (!name || !description || !price) {
+    // Affichage du message d'erreur
+    invalidFeedback.style.display = "block";
+
+    // Annulation d'un éventuel timeout précédent
+    clearTimeout(invalidFeedbackTimeout);
+
+    // Masquage du message d'erreur après 3 secondes
+    invalidFeedbackTimeout = setTimeout(() => {
+      invalidFeedback.style.display = "none";
+    }, 3000);
+
+    return;
+  }
+
+  // Ajout de la potion dans la boutique
+  addPotion(name, description, price);
+
+  // Réinitialisation du formulaire après soumission
+  form.reset();
+});
